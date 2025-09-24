@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kantor Kementerian Agama Lombok Barat</title>
+    <link rel="icon" type="image/png" href="assets/kemenag.svg" />
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        /* background: #5fa343; */
+        background: url("assets/bg-green-white.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      .container {
+        max-width: 480px;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        object-fit: cover;
+      }
+
+      h1 {
+        margin-bottom: 5px;
+      }
+
+      .hours {
+        text-align: left;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .hours-header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .status {
+        font-weight: bold;
+      }
+
+      .open {
+        color: green;
+        padding-left: 8px;
+      }
+
+      .closed {
+        color: red;
+        padding-left: 8px;
+      }
+
+      .hours ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .hours li {
+        padding: 2px 0;
+      }
+
+      .hours-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+      }
+
+      .hours-list hr {
+        border: none;
+        border-top: 1px solid #f3f3f3;
+        margin: 6px 0;
+      }
+
+      .address {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #444;
+        text-align: start; /* center all text */
+      }
+
+      .address-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 18px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        gap: 8px; /* jarak antara ikon dan tulisan */
+      }
+
+      .address-header span {
+        font-size: 22px; /* buat ikon lebih besar */
+      }
+
+      .show-map-link {
+        display: inline-block;
+        margin-top: 8px;
+        color: #00aeff;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .show-map-link:hover {
+        color: #0077b5;
+        text-decoration: underline;
+      }
+
+      .social-network {
+        background: #efefef;
+        padding: 4px 8px;
+        border-radius: 8px;
+      }
+
+      .social {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #444;
+        text-align: start; /* center all text */
+      }
+
+      .social-header {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 18px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 8px; /* jarak antara ikon dan tulisan */
+      }
+
+      .social-header span {
+        font-size: 22px;
+      }
+
+      .link {
+        display: block;
+        background: #ffffff;
+        margin: 16px 0;
+        padding: 16px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease-in-out;
+      }
+
+      .link:hover {
+        background: #e6e6e6;
+      }
+
+      /* .link::after {
+        content: "→";
+        float: right;
+        color: #888;
+        font-size: 18px;
+        transition: transform 0.2s;
+      }
+
+      .link:hover::after {
+        transform: translateX(4px);
+      } */
+
+      .socials {
+        margin-top: 30px;
+      }
+
+      .socials a {
+        margin: 0 10px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #333;
+        transition: color 0.2s;
+      }
+
+      .socials a:hover {
+        color: #0077b5;
+      }
+
+      .pengaduan {
+        background: #ffffff;
+        border-radius: 8px;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+      .hero-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        padding: 16px;
+        box-sizing: border-box;
+      }
+
+      .link-pengaduan {
+        display: block;
+        background: #fffd8f;
+        margin: 0 16px;
+        padding: 16px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        font-size: 18px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s ease-in-out;
+      }
+
+      /* contact */
+      .contact {
+        text-align: left;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .status {
+        font-weight: bold;
+      }
+
+      .open {
+        color: green;
+        padding-left: 8px;
+      }
+
+      .closed {
+        color: red;
+        padding-left: 8px;
+      }
+
+      .contact ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .contact li {
+        padding: 2px 0;
+      }
+
+      .contact-list li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+      }
+
+      .contact-list hr {
+        border: none;
+        border-top: 1px solid #f3f3f3;
+        margin: 6px 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+      }
+
+      .contact-item img {
+        width: 20px;
+        height: 20px;
+        margin-top: 4px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .contact-info .label {
+        font-size: 12px;
+        color: #aaaaaa;
+        margin: 0;
+      }
+
+      .contact-info .value {
+        margin: 0;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* facilities */
+      .facilities {
+        text-align: left;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .facilities-header {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .facilities-list {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        padding-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 style="color: #fff; margin-bottom: 32px">SELAMAT DATANG</h1>
+      <!-- <h3>KANTOR KEMENTERIAN AGAMA LOMBOK BARAT</h3> -->
+
+      <!-- form pengaduan -->
+      <div class="pengaduan">
+        <!-- img -->
+        <img class="hero-img" src="assets/bg-kemenag.jpeg" alt="background" />
+        <h2>Pengaduan Masyarakat</h2>
+        <p style="color: #aaaaaa">
+          Kantor Kementerian Agama Kabupaten Lombok Barat
+        </p>
+        <a
+          class="link-pengaduan"
+          href="https://facebook.com/kemenag"
+          target="_blank"
+        >
+          FORM PENGADUAN
+        </a>
+      </div>
+
+      <!-- open hours -->
+      <div class="hours">
+        <div class="hours-header">
+          <span>🕒 Open Hours:</span>
+          <span id="openStatus" class="status">Memuat...</span>
+        </div>
+        <ul class="hours-list">
+          <li>
+            <strong>Senin:</strong>
+            <span style="color: #aaaaaa">07.30 - 16.00</span>
+          </li>
+          <hr />
+          <li>
+            <strong>Selasa:</strong>
+            <span style="color: #aaaaaa">07.30 - 16.00</span>
+          </li>
+          <hr />
+          <li>
+            <strong>Rabu:</strong>
+            <span style="color: #aaaaaa">07.30 - 16.00</span>
+          </li>
+          <hr />
+          <li>
+            <strong>Kamis:</strong>
+            <span style="color: #aaaaaa">07.30 - 16.00</span>
+          </li>
+          <hr />
+          <li>
+            <strong>Jumat:</strong>
+            <span style="color: #aaaaaa">07.30 - 16.00</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- address -->
+      <div class="address">
+        <div class="address-header">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            style=""
+          >
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+            />
+          </svg>
+          <span>Address</span>
+        </div>
+        <p style="color: #aaaaaa">
+          Jl. Soekarno Hatta, Dasan Geres, Gerung, Kabupaten Lombok Barat, Nusa
+          Tenggara Barat. KP. 83363
+        </p>
+        <a
+          href="https://www.google.com/maps/place/Kemenag+Lombok+Barat/@-8.6838117,116.1357106,994m/data=!3m1!1e3!4m10!1m2!2m1!1skantor+kemenag+lombok+barat!3m6!1s0x2dcdbbf5236d1879:0x5682d6820024e894!8m2!3d-8.683756!4d116.138288!15sChtrYW50b3Iga2VtZW5hZyBsb21ib2sgYmFyYXSSARFnb3Zlcm5tZW50X29mZmljZaoBWRABKhIiDmthbnRvciBrZW1lbmFnKCYyIBABIhw1IfSWcxUkXx_S_8XUh1nAwV7zwOrPKeA5WSYTMh8QAiIba2FudG9yIGtlbWVuYWcgbG9tYm9rIGJhcmF04AEA!16s%2Fg%2F11b7c884kj?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          class="show-map-link"
+        >
+          Show on Map
+        </a>
+      </div>
+
+      <!-- Social Network -->
+      <div class="social">
+        <div class="social-header">
+          <span>Our Social Network</span>
+        </div>
+        <a
+          class="link"
+          href="https://kantorkemenaglobar.wordpress.com/"
+          target="_blank"
+        >
+          <img
+            src="assets/website.svg"
+            alt="Facebook"
+            width="20"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+          Website Resmi
+          <span style="float: right; font-size: 18px; color: #888">→</span>
+        </a>
+
+        <a class="link" href="https://facebook.com/kemenag" target="_blank">
+          <img
+            src="assets/facebook.svg"
+            alt="Facebook"
+            width="30"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+          Facebook
+          <span style="float: right; font-size: 18px; color: #888">→</span>
+        </a>
+        <a class="link" href="https://wa.me/6282227419282" target="_blank">
+          <img
+            src="assets/whatsapp.svg"
+            alt="Whatsapp"
+            width="20"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+          Hubungi Via Whatsapp
+          <span style="float: right; font-size: 18px; color: #888">→</span>
+        </a>
+      </div>
+
+      <!-- contact -->
+      <div class="contact">
+        <div class="contact-header">
+          <img
+            src="assets/grid.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+          <span>Contact</span>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <div class="contact-item">
+              <img src="assets/user.svg" alt="Icon" />
+              <div class="contact-info">
+                <p class="label">Name</p>
+                <p class="value">KEMENAG Lombok Barat</p>
+              </div>
+            </div>
+          </li>
+          <hr />
+          <li>
+            <div class="contact-item">
+              <img src="assets/phone.svg" alt="Icon" />
+              <div class="contact-info">
+                <p class="label">HOTLINE</p>
+                <p class="value">0370-681160</p>
+              </div>
+            </div>
+          </li>
+          <hr />
+          <li>
+            <div class="contact-item">
+              <img src="assets/email.svg" alt="Icon" />
+              <div class="contact-info">
+                <p class="label">e-mail</p>
+                <p class="value">kemenaglombokbarat@gmail.com</p>
+              </div>
+            </div>
+          </li>
+          <hr />
+          <li>
+            <div class="contact-item">
+              <img src="assets/website.svg" alt="Icon" />
+              <div class="contact-info">
+                <p class="label">website</p>
+                <p class="value">kantorkemenaglobar.wordpress.com</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- facilities -->
+      <div class="facilities">
+        <div class="facilities-header">
+          <img
+            src="assets/grid.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle; margin-right: 8px"
+          />
+          <span>Facilities</span>
+        </div>
+        <div class="facilities-list">
+          <img
+            src="assets/wifi.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle"
+          />
+          <img
+            src="assets/wheelchair.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle"
+          />
+          <img
+            src="assets/toilet.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle"
+          />
+          <img
+            src="assets/parking.svg"
+            alt="Facebook"
+            width="24"
+            style="vertical-align: middle"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function checkOpenStatus() {
+        const now = new Date();
+
+        // Konversi ke WITA (UTC+8)
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const local = new Date(utc + 8 * 3600000); // WITA (Lombok)
+
+        const day = local.getDay(); // 0 = Minggu, 1 = Senin, ..., 6 = Sabtu
+        const hour = local.getHours();
+        const minute = local.getMinutes();
+
+        const isWeekday = day >= 1 && day <= 5; // Senin - Jumat
+        const isWorkingHour =
+          (hour > 7 && hour < 16) || (hour === 7 && minute >= 30); // 07.30 - 16.00
+
+        const statusEl = document.getElementById("openStatus");
+
+        if (isWeekday && isWorkingHour) {
+          statusEl.textContent = "✅ Open Now";
+          statusEl.classList.add("open");
+          statusEl.classList.remove("closed");
+        } else {
+          statusEl.textContent = "❌ Closed Now";
+          statusEl.classList.add("closed");
+          statusEl.classList.remove("open");
+        }
+      }
+
+      checkOpenStatus();
+      setInterval(checkOpenStatus, 60000); // Update setiap menit
+    </script>
+  </body>
+</html>
